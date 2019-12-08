@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <nav>
-      <div class="nav-wrapper">
+    <nav class="teal lighten-1">
+      <div class="nav-wrapper ">
         <a href="#" class="brand-logo">Канал vuejs_jobs</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li>
@@ -40,6 +40,26 @@
           </div>
           <div class="card" v-else>
             <div class="card-content">
+              <div class="card-title">Информация</div>
+              <p>Приложение создано в учебных целях.</p>
+              <p>Возможные доработки:</p>
+              <ol>
+                <li>синхронизация данных</li>
+                <li>фильтрация</li>
+                <li>отборы по периоду</li>
+                <li>оплате</li>
+                <li>месту.</li>
+              </ol>
+              <p>Кроме того, возможно создание формы, после заполнения которой будет корректно подготовлен текст для канала.</p>
+              <br><hr /><br>
+              <p>
+                О найденных недочетах просьба писать на
+                <a
+                  href="mailto:idushii-mail@yandex.ru"
+                >idushii-mail@yandex.ru</a>
+              </p>
+              <p>Сейчас есть проблемы с правильным определением материалов.</p>
+              <br><hr /><br>
               <p>Информация актуальна на 08 12 2019</p>
               <p>
                 <a href="https://github.com/idushii/tg-vue-jobs" target="_blank">Репозиторий</a>
@@ -51,9 +71,9 @@
     </div>
 
     <footer>
-      ИП Ильинов &copy; 2019
+      ИП Ильинов 2019
       <br />
-      <a href="http://xn----dtbqbarpid7k.xn--p1ai/">www.ип-ильинов.рф</a>
+      <a target="_blank" href="http://xn----dtbqbarpid7k.xn--p1ai/">www.ип-ильинов.рф</a>
     </footer>
   </div>
 </template>
