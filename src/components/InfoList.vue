@@ -35,7 +35,7 @@ export default class InfoList extends Vue {
   @Prop() private showRezume!: boolean;
 
   public async mounted() {
-    const data = await fetch('/items.json').then((r) => r.json());
+    const data = await fetch('./items.json').then((r) => r.json());
     this.items.parse(data.reverse());
     if (!this.showVakancies) { this.items.showVakancies = false; }
     if (!this.showRezume) { this.items.showRezume = false; }

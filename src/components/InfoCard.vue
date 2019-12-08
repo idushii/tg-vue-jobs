@@ -16,15 +16,13 @@ import { Items, Item } from '../items';
 @Component
 export default class InfoCard extends Vue {
 
-  public isShowText: Boolean = false;
+  public isShowText: boolean = false;
   @Prop() private City!: string;
   @Prop() private Format!: string;
   @Prop() private Employment!: string;
   @Prop() private Rating!: string;
   @Prop() private Text!: string;
 
-  @Emit('select')
-  public select() {}
 }
 </script>
 

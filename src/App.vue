@@ -91,8 +91,8 @@ import { Items, Item } from './items';
 export default class App extends Vue {
   public showItem: Item | false = false;
 
-  public showVakancies: Boolean = true;
-  public showRezume: Boolean = true;
+  public showVakancies: boolean = true;
+  public showRezume: boolean = true;
 
   public select(item: Item) {
     this.showItem = item;
