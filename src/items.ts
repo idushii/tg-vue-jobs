@@ -171,6 +171,7 @@ class Items {
         if (this.showVakancies && this.showRezume) return this._items
         if (this.showRezume) return this._items.filter(item => !item.isVakancies)
         if (this.showVakancies) return this._items.filter(item => item.isVakancies)
+        return []
     }
 
     set value(items: Item[]) {
@@ -184,4 +185,4 @@ class Items {
     }
 }
 
-export { Item, Items, Currency, Rating }
+export { Item, Items }
