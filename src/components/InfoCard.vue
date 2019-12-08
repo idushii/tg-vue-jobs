@@ -1,13 +1,20 @@
 <template>
-<div class="card">
-  <div class="card-content">
-    {{items}}
+  <div>
+    <div class="card" v-for="(item, index) in items.value" :key="`item-${index}`">
+      <div class="card-content">
+        {{index+1}}
+        <p>Город: {{item.City}}</p>
+        <p>Формат работы: {{item.Format}}</p>
+        <p>Занятость: {{item.Employment}}</p>
+        <p>Оплата: {{item.Rating}}</p>
+        {{item.text}}
+      </div>
+    </div>
   </div>
-</div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 import { Items, Item } from "../items";
 
@@ -15,12 +22,13 @@ import { Items, Item } from "../items";
 export default class InfoCard extends Vue {
   @Prop() private msg!: string;
 
-  items: Items = new Items()
+  items: Items = new Items();
 
   async mounted() {
-    let data = await fetch('/items.json').then(r => r.json())
-    this.items.parse(data)
+    let data = await fetch("/items.json").then(r => r.json());
+    this.items.parse(data);
   }
+
 }
 </script>
 
