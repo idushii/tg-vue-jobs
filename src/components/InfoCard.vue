@@ -10,21 +10,21 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Emit } from "vue-property-decorator";
-import { Items, Item } from "../items";
+import { Component, Prop, Vue, Emit } from 'vue-property-decorator';
+import { Items, Item } from '../items';
 
 @Component
 export default class InfoCard extends Vue {
+
+  public isShowText: Boolean = false;
   @Prop() private City!: string;
   @Prop() private Format!: string;
   @Prop() private Employment!: string;
   @Prop() private Rating!: string;
   @Prop() private Text!: string;
 
-  isShowText: Boolean = false;
-
-  @Emit("select")
-  select() {}
+  @Emit('select')
+  public select() {}
 }
 </script>
 

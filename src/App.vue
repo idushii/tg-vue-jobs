@@ -79,22 +79,22 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import InfoList from "./components/InfoList.vue";
-import { Items, Item } from "./items";
+import { Component, Vue } from 'vue-property-decorator';
+import InfoList from './components/InfoList.vue';
+import { Items, Item } from './items';
 
 @Component({
   components: {
-    InfoList
-  }
+    InfoList,
+  },
 })
 export default class App extends Vue {
-  showItem: Item | false = false;
+  public showItem: Item | false = false;
 
-  showVakancies: Boolean = true;
-  showRezume: Boolean = true;
+  public showVakancies: Boolean = true;
+  public showRezume: Boolean = true;
 
-  select(item: Item) {
+  public select(item: Item) {
     this.showItem = item;
   }
 }

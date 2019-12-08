@@ -19,42 +19,42 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Emit, Watch } from "vue-property-decorator";
+import { Component, Prop, Vue, Emit, Watch } from 'vue-property-decorator';
 
-import { Items, Item } from "../items";
-import InfoCard from "./InfoCard.vue";
+import { Items, Item } from '../items';
+import InfoCard from './InfoCard.vue';
 
 @Component({
-  components: { InfoCard }
+  components: { InfoCard },
 })
 export default class InfoList extends Vue {
+
+  public showItem: Item | false = false;
+  public items: Items = new Items();
   @Prop() private showVakancies!: boolean;
   @Prop() private showRezume!: boolean;
 
-  showItem: Item | false = false;
-  items: Items = new Items();
-
-  async mounted() {
-    let data = await fetch("/items.json").then(r => r.json());
+  public async mounted() {
+    const data = await fetch('/items.json').then((r) => r.json());
     this.items.parse(data.reverse());
-    if (!this.showVakancies) this.items.showVakancies = false;
-    if (!this.showRezume) this.items.showRezume = false;
+    if (!this.showVakancies) { this.items.showVakancies = false; }
+    if (!this.showRezume) { this.items.showRezume = false; }
   }
 
-  @Emit("select")
-  localSelect(index: number) {
-    //@ts-ignore
+  @Emit('select')
+  public localSelect(index: number) {
+    // @ts-ignore
     return this.items.value[index];
   }
 
-  @Watch("showVakancies")
-  f1() {
-    this.items.showVakancies = this.showVakancies
+  @Watch('showVakancies')
+  public f1() {
+    this.items.showVakancies = this.showVakancies;
   }
-  
-  @Watch("showRezume")
-  f2() {
-    this.items.showRezume = this.showRezume
+
+  @Watch('showRezume')
+  public f2() {
+    this.items.showRezume = this.showRezume;
   }
 }
 </script>
