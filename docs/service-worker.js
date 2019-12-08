@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.fb20f0206f469c9a90ff06c0609a053f.js"
+  "precache-manifest.dc34e67a4efed17b9aff110b7891b031.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "tg-vue-jobs"});
