@@ -63,6 +63,7 @@ class Item {
     format: String
     employment: Employment
     rating: Rating
+    text:String
 
     constructor(str: String) {
         let item = this.parse(str)
@@ -70,6 +71,7 @@ class Item {
         this.format = item.format
         this.employment = item.employment
         this.rating = item.rating
+        this.text = str
     }
 
     private parse(str: String) {
@@ -82,6 +84,15 @@ class Item {
         for (let line of lines) {
             if (line.indexOf('город') != -1) {
                 city = line.split(':')[1]
+                try {
+                    let start = city.indexOf('#')
+                    if (start != -1) {
+                        let end = city.indexOf('</a>')
+                        city = city.substr(start + 1, city.length - end + 1)
+                    }
+                } catch (error) {
+
+                }
             }
             if (line.indexOf('формат') != -1) {
                 format = line.split(':')[1]
@@ -96,7 +107,7 @@ class Item {
                     if (_employment.indexOf('проект') != -1) employment = Employment.Проектная
                     if (_employment.indexOf('час') != -1) employment = Employment.ПоЧасовая
                 } catch (err) {
-                    console.log({err})
+                    console.log({ err })
                 }
             }
             if (line.indexOf('вилка') != -1) {
@@ -110,6 +121,10 @@ class Item {
             employment,
             rating,
         }
+    }
+
+    get City() {
+        return this.city
     }
 }
 
