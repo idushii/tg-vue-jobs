@@ -38,8 +38,9 @@ class Item {
 class Items {
     _items: Item[] = []
 
-    constructor(items:Item[]) {
-        this._items = items
+    constructor(items?:Item[]) {
+        if (items)
+            this._items = items
     }
 
     get value() {
@@ -49,4 +50,12 @@ class Items {
     set value(items: Item[]) {
         this._items = items
     }
+
+    parse(items: String[]) {
+        for(let item of items) {
+            this._items.push(new Item(item));
+        }
+    }
 }
+
+export {Item, Items, Currency, Rating }

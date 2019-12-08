@@ -19,7 +19,7 @@
     <div class="container">
       <div class="row">
         <div class="col s12">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet voluptate sit error asperiores eum dolores aliquid ea facere eveniet eos, quasi modi commodi placeat, quis reiciendis ipsa provident explicabo cumque.
+          <InfoCard />
         </div>
       </div>
     </div>
@@ -28,11 +28,11 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import HelloWorld from "./components/HelloWorld.vue";
+import InfoCard from "./components/InfoCard.vue";
 
 @Component({
   components: {
-    HelloWorld
+    InfoCard
   }
 })
 export default class App extends Vue {}
