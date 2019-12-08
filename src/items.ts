@@ -83,6 +83,7 @@ class Item {
     employment: Employment
     rating: Rating
     text: String
+    isVakancies: Boolean = false
 
     constructor(str: String) {
         let item = this.parse(str)
@@ -125,6 +126,10 @@ class Item {
             if (line.indexOf('вилка') != -1) {
                 rating = new Rating(line.split(':')[1])
             }
+
+            if (line.indexOf('#вакансия') != -1) {
+                this.isVakancies = true
+            }
         }
 
         return {
@@ -154,6 +159,8 @@ class Item {
 
 class Items {
     _items: Item[] = []
+    showVakancies: Boolean = true
+    showRezume: Boolean = true
 
     constructor(items?: Item[]) {
         if (items)
@@ -161,7 +168,9 @@ class Items {
     }
 
     get value() {
-        return this._items
+        if (this.showVakancies && this.showRezume) return this._items
+        if (this.showRezume) return this._items.filter(item => !item.isVakancies)
+        if (this.showVakancies) return this._items.filter(item => item.isVakancies)
     }
 
     set value(items: Item[]) {
