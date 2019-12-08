@@ -15,12 +15,18 @@
     </nav>
     <div class="container">
       <div class="row">
+        <div class="col s12"></div>
         <div class="col s12 m4">
           <InfoList @select="select" />
         </div>
         <div class="col s12 m8 preview">
-          <div class="card " v-if="showItem">
+          <div class="card" v-if="showItem">
             <div class="card-content" v-html="showItem.text" />
+          </div>
+          <div class="card" v-else>
+            <div class="card-content">
+              <p>Информация актуальна на 08 12 2019</p>
+            </div>
           </div>
         </div>
       </div>

@@ -30,7 +30,7 @@ export default class InfoList extends Vue {
 
   async mounted() {
     let data = await fetch("/items.json").then(r => r.json());
-    this.items.parse(data);
+    this.items.parse(data.reverse());
   }
 
   @Emit("select")
