@@ -2,24 +2,26 @@
   <div id="app">
     <nav>
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Logo</a>
+        <a href="#" class="brand-logo">Канал vuejs_jobs</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li>
-            <a href="sass.html">Sass</a>
+            <a target="_blank" href="https://www.xn----dtbqbarpid7k.xn--p1ai/#/">Основной сайт</a>
           </li>
           <li>
-            <a href="badges.html">Components</a>
-          </li>
-          <li>
-            <a href="collapsible.html">JavaScript</a>
+            <a target="_blank" href="https://t.me/vuejs_jobs">Канал vuejs_jobs</a>
           </li>
         </ul>
       </div>
     </nav>
     <div class="container">
       <div class="row">
-        <div class="col s12">
-          <InfoCard />
+        <div class="col s12 m4">
+          <InfoList @select="select" />
+        </div>
+        <div class="col s12 m8 preview">
+          <div class="card " v-if="showItem">
+            <div class="card-content" v-html="showItem.text" />
+          </div>
         </div>
       </div>
     </div>
@@ -28,15 +30,35 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import InfoCard from "./components/InfoCard.vue";
+import InfoList from "./components/InfoList.vue";
+import { Items, Item } from "./items";
 
 @Component({
   components: {
-    InfoCard
+    InfoList
   }
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  showItem: Item | false = false;
+
+  select(item: Item) {
+    console.log(item);
+    this.showItem = item;
+  }
+}
 </script>
 
 <style lang="scss">
+.preview {
+  position: sticky !important;
+  top: 0px;
+  .card {
+    max-height: 95vh;
+    overflow-y: auto;
+  }
+}
+
+nav {
+  padding: 0 1rem;
+}
 </style>
