@@ -26,6 +26,7 @@
           <div class="card" v-else>
             <div class="card-content">
               <p>Информация актуальна на 08 12 2019</p>
+              <p><a href="https://github.com/idushii/tg-vue-jobs" target="_blank">Репозиторий</a></p>
             </div>
           </div>
         </div>
