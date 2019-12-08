@@ -1,8 +1,8 @@
 enum Currency {
-    Rub,
-    Euro,
-    Dollar,
-    Other
+    Rub = "Руб",
+    Euro = "Евро",
+    Dollar = "$",
+    Other = ""
 }
 
 class HasTag {
@@ -70,6 +70,10 @@ class Rating {
             minPrice, maxPrice, currency
         }
 
+    }
+
+    toString() {
+        return `${this.minPrice} - ${this.maxPrice} ${this.currency}`
     }
 }
 
