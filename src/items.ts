@@ -5,11 +5,26 @@ enum Currency {
     Other
 }
 
+class HasTag {
+    static parse(str: string) {
+        try {
+            let start = str.indexOf('#')
+            if (start != -1) {
+                let end = str.indexOf('</a>')
+                return str.substr(start + 1, str.length - end + 1)
+            }
+        } catch (error) {
+
+        }
+        return str
+    }
+}
+
 enum Employment {
-    Полная,
-    Частичная,
-    Проектная,
-    ПоЧасовая
+    Полная = "Полная",
+    Частичная = "Частичная",
+    Проектная = "Проектная",
+    ПоЧасовая = "По часовая"
 }
 
 class Rating {
@@ -63,7 +78,7 @@ class Item {
     format: String
     employment: Employment
     rating: Rating
-    text:String
+    text: String
 
     constructor(str: String) {
         let item = this.parse(str)
@@ -83,27 +98,20 @@ class Item {
 
         for (let line of lines) {
             if (line.indexOf('город') != -1) {
-                city = line.split(':')[1]
-                try {
-                    let start = city.indexOf('#')
-                    if (start != -1) {
-                        let end = city.indexOf('</a>')
-                        city = city.substr(start + 1, city.length - end + 1)
-                    }
-                } catch (error) {
-
-                }
+                city = HasTag.parse(line.split(':')[1])
             }
             if (line.indexOf('формат') != -1) {
-                format = line.split(':')[1]
+                format = HasTag.parse(line.split(':')[1])
             }
             if (line.indexOf('занятость') != -1 && line.indexOf('занятость') < 5) {
                 try {
                     let _employment = line.split(':')[1].toLocaleLowerCase()
-                    if (_employment == 'полная') employment = Employment.Полная
-                    if (_employment == 'fulltime') employment = Employment.Полная
-                    if (_employment == 'частичная') employment = Employment.Частичная
-                    if (_employment == 'partime') employment = Employment.Частичная
+                    if (_employment.indexOf('полная') != -1) employment = Employment.Полная
+                    if (_employment.indexOf('fulltime') != -1) employment = Employment.Полная
+                    if (_employment.indexOf('фулл-тайм') != -1) employment = Employment.Полная
+
+                    if (_employment.indexOf('частичная') != -1) employment = Employment.Частичная
+                    if (_employment.indexOf('partime') != -1) employment = Employment.Частичная
                     if (_employment.indexOf('проект') != -1) employment = Employment.Проектная
                     if (_employment.indexOf('час') != -1) employment = Employment.ПоЧасовая
                 } catch (err) {
@@ -125,6 +133,18 @@ class Item {
 
     get City() {
         return this.city
+    }
+
+    get Format() {
+        return this.format
+    }
+
+    get Employment() {
+        return this.employment
+    }
+
+    get Rating() {
+        return this.rating
     }
 }
 
