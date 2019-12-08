@@ -10,6 +10,11 @@
       :Text="item.text"
       @select="localSelect(index)"
     />
+    <div class="card" v-if="items.value && items.value.length == 0">
+      <div class="card-content">
+        Данных нет
+      </div>
+    </div>
   </div>
 </template>
 
